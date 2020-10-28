@@ -8,18 +8,36 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@ant-design/react-native": "^4.0.5",
+    "@react-native-community/masked-view": "0.1.10",
+    "@react-navigation/bottom-tabs": "^5.10.0",
+    "@react-navigation/drawer": "^5.10.0",
+    "@react-navigation/native": "^5.8.0",
+    "@react-navigation/stack": "^5.10.0",
+    "@sentry/integrations": "^5.27.1",
     "expo": "~39.0.2",
+    "expo-application": "^2.3.0",
+    "expo-auth-session": "^2.0.0",
+    "expo-secure-store": "^9.2.0",
     "expo-status-bar": "~1.0.2",
+    "firebase": "^8.0.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.4.tar.gz",
-    "react-native-web": "~0.13.12"
+    "react-native-gesture-handler": "~1.7.0",
+    "react-native-reanimated": "~1.13.0",
+    "react-native-safe-area-context": "3.1.4",
+    "react-native-screens": "~2.10.1",
+    "react-native-web": "~0.13.12",
+    "react-native-webview": "^10.10.0",
+    "sentry-expo": "^3.0.2"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",
     "@types/react": "~16.9.35",
     "@types/react-dom": "~16.9.8",
     "@types/react-native": "~0.63.2",
+    "babel-plugin-import": "^1.13.1",
     "typescript": "~3.9.5"
   },
   "private": true

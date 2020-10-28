@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1068323245880",
+    "firebase_url": "https://expo0auth.firebaseio.com",
+    "project_id": "expo0auth",
+    "storage_bucket": "expo0auth.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1068323245880:android:cc1bf135f3cbfea26f7bcd",
+        "android_client_info": {
+          "package_name": "com.expo0auth.demo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1068323245880-f7r9hocb5v92s0dubf0ucpnkcm2ise79.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFFIwlZ46U5y1vzsVIhnBhYf8qP2hSMBU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1068323245880-f7r9hocb5v92s0dubf0ucpnkcm2ise79.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
