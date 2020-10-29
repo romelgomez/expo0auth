@@ -1,61 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
-import { Text } from 'react-native';
-import { Center } from './components';
-import { AuthNavProps } from './AuthParamList';
-import {
-  Button,
-  WhiteSpace,
-  ActivityIndicator,
-} from '@ant-design/react-native';
+import { Center } from './commons';
+import { ActivityIndicator } from '@ant-design/react-native';
 import firebase from 'firebase';
-import { GoogleAuth, AnonymouslyAuth, signOut } from './auths';
+import { SignIn, SignUp, Dashboard, Account } from './views';
 
 type User = firebase.User | null;
 
 const Stack = createStackNavigator();
-
-// view
-function Login({ navigation }: AuthNavProps<'Login'>) {
-  return (
-    <Center>
-      <GoogleAuth />
-      <WhiteSpace size="lg" />
-      <AnonymouslyAuth />
-
-      <WhiteSpace size="lg" />
-      <WhiteSpace size="lg" />
-      <WhiteSpace size="lg" />
-      <WhiteSpace size="lg" />
-      <WhiteSpace size="lg" />
-      <WhiteSpace size="lg" />
-
-      <Button
-        onPress={() => {
-          navigation.navigate('Register');
-        }}
-      >
-        Sign Up
-      </Button>
-    </Center>
-  );
-}
-
-// view
-function Register({ navigation }: AuthNavProps<'Register'>) {
-  return (
-    <Center>
-      <Button
-        onPress={() => {
-          navigation.navigate('Login');
-        }}
-      >
-        Sign In
-      </Button>
-    </Center>
-  );
-}
 
 export const Routes: React.FC<RoutesProps> = ({}) => {
   const [user, setUser] = useState<User>(null);
@@ -113,26 +66,37 @@ export const Routes: React.FC<RoutesProps> = ({}) => {
   return (
     <NavigationContainer>
       {user ? (
-        <Center>
-          <Text>The user exist</Text>
-          <WhiteSpace size="lg" />
-          <Button onPress={signOut}>SignOut</Button>
-        </Center>
-      ) : (
-        <Stack.Navigator initialRouteName="Login">
+        <Stack.Navigator initialRouteName="Dashboard">
           <Stack.Screen
-            name="Login"
+            name="Dashboard"
+            options={{
+              headerTitle: 'Dashboard',
+            }}
+            component={Dashboard}
+          />
+          <Stack.Screen
+            name="Account"
+            options={{
+              headerTitle: 'Account',
+            }}
+            component={Account}
+          />
+        </Stack.Navigator>
+      ) : (
+        <Stack.Navigator initialRouteName="SignIn">
+          <Stack.Screen
+            name="SignIn"
             options={{
               headerTitle: 'Sign In',
             }}
-            component={Login}
+            component={SignIn}
           />
           <Stack.Screen
-            name="Register"
+            name="SignUp"
             options={{
               headerTitle: 'Sign Up',
             }}
-            component={Register}
+            component={SignUp}
           />
         </Stack.Navigator>
       )}
