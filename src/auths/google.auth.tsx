@@ -9,14 +9,16 @@ import { Button } from '@ant-design/react-native';
 maybeCompleteAuthSession();
 
 export function GoogleAuth() {
-
   // TODO: Move the keys to environment logic
   // https://github.com/expo/expo/issues/3540#issuecomment-466709365
   // https://docs.expo.io/versions/latest/sdk/google/
   const [request, response, promptAsync] = useIdTokenAuthRequest({
-    expoClientId: '1068323245880-f7r9hocb5v92s0dubf0ucpnkcm2ise79.apps.googleusercontent.com', 
-    webClientId: '1068323245880-f7r9hocb5v92s0dubf0ucpnkcm2ise79.apps.googleusercontent.com',
-    androidClientId: '1068323245880-psk6d6giils8osmpo2811v798b2pklmc.apps.googleusercontent.com',
+    expoClientId:
+      '1068323245880-f7r9hocb5v92s0dubf0ucpnkcm2ise79.apps.googleusercontent.com',
+    webClientId:
+      '1068323245880-f7r9hocb5v92s0dubf0ucpnkcm2ise79.apps.googleusercontent.com',
+    androidClientId:
+      '1068323245880-psk6d6giils8osmpo2811v798b2pklmc.apps.googleusercontent.com',
   });
 
   const login = () => {
@@ -45,8 +47,8 @@ export function GoogleAuth() {
             'GoogleAuth:signInWithCredential',
             `uid: ${user?.uid},`,
             `email: ${user?.email},`,
-            `isAnonymous: ${user?.isAnonymous}.`,
-          ); 
+            `isAnonymous: ${user?.isAnonymous}.`
+          );
         })
         .catch((reason) => {
           console.error(reason);
@@ -61,9 +63,8 @@ export function GoogleAuth() {
   }, [response]);
 
   return (
-    // <div>
-    //   <Button onPress={methodDoesNotExist}>Break the world</Button>;
-    // </div>
-    <Button disabled={!request} onPress={login}>Login with Google</Button>
+    <Button disabled={!request} onPress={login}>
+      Login with Google
+    </Button>
   );
 }

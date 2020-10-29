@@ -9,8 +9,8 @@ import { ResponseType } from 'expo-auth-session';
 
 maybeCompleteAuthSession();
 
-// TODO: Get facebook id from enviroments 
-const FB_APP_ID = "";
+// TODO: Get facebook id from enviroments
+const FB_APP_ID = '';
 
 export function FacebookAuth() {
   const [request, response, promptAsync] = useAuthRequest({
@@ -33,26 +33,30 @@ export function FacebookAuth() {
 
     if (response?.type === 'success') {
       const { access_token } = response.params;
-      
-      const credential = firebase.auth.FacebookAuthProvider.credential(access_token);
+
+      const credential = firebase.auth.FacebookAuthProvider.credential(
+        access_token
+      );
 
       // Sign in with the credential from the Facebook user.
       firebase
         .auth()
         .signInWithCredential(credential)
         .catch((reason) => {
-           console.error(reason);
+          console.error(reason);
         });
     }
 
     return () => {
-        if (Platform.OS === 'android') {
-            coolDownAsync();
-        }
+      if (Platform.OS === 'android') {
+        coolDownAsync();
+      }
     };
   }, [response]);
 
   return (
-    <Button disabled={!request} onPress={login} >Login with Facebook</Button> 
+    <Button disabled={!request} onPress={login}>
+      Login with Facebook
+    </Button>
   );
 }

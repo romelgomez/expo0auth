@@ -7,8 +7,8 @@ function signInAnonymously() {
     .auth()
     .signInAnonymously()
     .then((userCredential: firebase.auth.UserCredential) => {
-        // console.log(userCredential);
-        // console.log('User signed in anonymously');
+      // console.log(userCredential);
+      // console.log('User signed in anonymously');
     })
     .catch((error) => {
       // if (error.code === 'auth/operation-not-allowed') {
@@ -18,8 +18,6 @@ function signInAnonymously() {
     });
 }
 
-export function AnonymouslyAuth() { 
-   return (
-        <Button onPress={signInAnonymously}>Login as Anonymous</Button>
-   )
+export function AnonymouslyAuth() {
+  return <Button onPress={signInAnonymously}>Login as Anonymous</Button>;
 }

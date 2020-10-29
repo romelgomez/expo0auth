@@ -6,10 +6,12 @@ export function signOut() {
   firebase
     .auth()
     .signOut()
-    .then(() => console.log(
-      'signOut',
-      `uid: ${user?.uid},`,
-      `email: ${user?.email},`,
-      `isAnonymous: ${user?.isAnonymous}.`,
-    ));
+    .then(() =>
+      console.log(
+        'signOut',
+        `uid: ${user?.uid},`,
+        `email: ${user?.email},`,
+        `isAnonymous: ${user?.isAnonymous}.`
+      )
+    );
 }
