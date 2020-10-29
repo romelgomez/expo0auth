@@ -28,7 +28,6 @@ export function GoogleAuth() {
   };
 
   useEffect(() => {
-    // console.log('LoginFirebaseFlow:response: ', JSON.stringify(response));
 
     if (Platform.OS === 'android') {
       warmUpAsync();
