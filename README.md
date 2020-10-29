@@ -1,5 +1,7 @@
 # Expo0auth
 
+[https://expo.io/@autana/projects/expo0auth](https://expo.io/@autana/projects/expo0auth)
+
 ## Google Login
 
 ### Works in
@@ -11,3 +13,7 @@
 ### Bugs
 
 - Android Apk: The google login not completed the process, onAuthStateChanged never it get called. **Apk example:** [https://expo.io/artifacts/2d532756-f6d3-4313-98b2-2ea693a44f54](https://expo.io/artifacts/2d532756-f6d3-4313-98b2-2ea693a44f54)
+
+## Goals
+
+- [ ] Have the facebook, google, phone, email, auth process covered and tested.
