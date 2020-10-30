@@ -5,7 +5,7 @@ import { Text } from 'react-native';
 import { Button, WhiteSpace } from '@ant-design/react-native';
 import { signOut } from '../auths';
 
-export function Dashboard({ navigation }: AuthNavProps<'Dashboard'>) {
+export function DashboardView({ navigation }: AuthNavProps<'DashboardView'>) {
   return (
     <Center>
       <Text>Dashboard View - The user exist</Text>
@@ -14,7 +14,7 @@ export function Dashboard({ navigation }: AuthNavProps<'Dashboard'>) {
 
       <Button
         onPress={() => {
-          navigation.navigate('Account');
+          navigation.navigate('AccountView');
         }}
       >
         Account

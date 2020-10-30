@@ -3,12 +3,12 @@ import { Center } from '../commons';
 import { AuthNavProps } from '../AuthParamList';
 import { Button } from '@ant-design/react-native';
 
-export function SignUp({ navigation }: AuthNavProps<'SignUp'>) {
+export function SignUpView({ navigation }: AuthNavProps<'SignUpView'>) {
   return (
     <Center>
       <Button
         onPress={() => {
-          navigation.navigate('SignIn');
+          navigation.navigate('SignInView');
         }}
       >
         Sign In

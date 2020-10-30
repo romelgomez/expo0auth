@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { Center } from './commons';
 import { ActivityIndicator } from '@ant-design/react-native';
 import firebase from 'firebase';
-import { SignIn, SignUp, Dashboard, Account } from './views';
+import { SignInView, SignUpView, DashboardView, AccountView } from './views';
 
 type User = firebase.User | null;
 
+interface RoutesProps {}
+
 const Stack = createStackNavigator();
+
 
 export const Routes: React.FC<RoutesProps> = ({}) => {
   const [user, setUser] = useState<User>(null);
@@ -72,14 +75,14 @@ export const Routes: React.FC<RoutesProps> = ({}) => {
             options={{
               headerTitle: 'Dashboard',
             }}
-            component={Dashboard}
+            component={DashboardView}
           />
           <Stack.Screen
             name="Account"
             options={{
               headerTitle: 'Account',
             }}
-            component={Account}
+            component={AccountView}
           />
         </Stack.Navigator>
       ) : (
@@ -89,14 +92,14 @@ export const Routes: React.FC<RoutesProps> = ({}) => {
             options={{
               headerTitle: 'Sign In',
             }}
-            component={SignIn}
+            component={SignInView}
           />
           <Stack.Screen
             name="SignUp"
             options={{
               headerTitle: 'Sign Up',
             }}
-            component={SignUp}
+            component={SignUpView}
           />
         </Stack.Navigator>
       )}

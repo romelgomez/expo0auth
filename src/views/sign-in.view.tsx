@@ -2,12 +2,14 @@ import React from 'react';
 import { Center } from '../commons';
 import { AuthNavProps } from '../AuthParamList';
 import { Button, WhiteSpace } from '@ant-design/react-native';
-import { GoogleAuth, AnonymouslyAuth } from '../auths';
+import { GoogleAuth, FacebookAuth, AnonymouslyAuth } from '../auths';
 
-export function SignIn({ navigation }: AuthNavProps<'SignIn'>) {
+export function SignInView({ navigation }: AuthNavProps<'SignInView'>) {
   return (
     <Center>
       <GoogleAuth />
+      <WhiteSpace size="lg" />
+      <FacebookAuth />
       <WhiteSpace size="lg" />
       <AnonymouslyAuth />
 
@@ -20,7 +22,7 @@ export function SignIn({ navigation }: AuthNavProps<'SignIn'>) {
 
       <Button
         onPress={() => {
-          navigation.navigate('SignUp');
+          navigation.navigate('SignUpView');
         }}
       >
         Sign Up
