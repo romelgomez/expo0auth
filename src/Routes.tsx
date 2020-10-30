@@ -69,16 +69,16 @@ export const Routes: React.FC<RoutesProps> = ({}) => {
   return (
     <NavigationContainer>
       {user ? (
-        <Stack.Navigator initialRouteName="Dashboard">
+        <Stack.Navigator initialRouteName="DashboardView">
           <Stack.Screen
-            name="Dashboard"
+            name="DashboardView"
             options={{
               headerTitle: 'Dashboard',
             }}
             component={DashboardView}
           />
           <Stack.Screen
-            name="Account"
+            name="AccountView"
             options={{
               headerTitle: 'Account',
             }}
@@ -86,16 +86,16 @@ export const Routes: React.FC<RoutesProps> = ({}) => {
           />
         </Stack.Navigator>
       ) : (
-        <Stack.Navigator initialRouteName="SignIn">
+        <Stack.Navigator initialRouteName="SignInView">
           <Stack.Screen
-            name="SignIn"
+            name="SignInView"
             options={{
               headerTitle: 'Sign In',
             }}
             component={SignInView}
           />
           <Stack.Screen
-            name="SignUp"
+            name="SignUpView"
             options={{
               headerTitle: 'Sign Up',
             }}
