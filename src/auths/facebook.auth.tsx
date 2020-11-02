@@ -7,11 +7,11 @@ import { maybeCompleteAuthSession } from 'expo-web-browser';
 import { useAuthRequest } from 'expo-auth-session/providers/facebook';
 import { ResponseType, AuthSessionResult } from 'expo-auth-session';
 import { AccountLinking, PromptAsync } from './auth.d';
+import environments from '../environments';
 
 maybeCompleteAuthSession();
 
-// TODO: Get facebook id from enviroments
-const FB_APP_ID = '651129349099345';
+const FB_APP_ID = environments.facebook?.appId
 
 const login = (promptAsync: PromptAsync) => {
   return promptAsync()
