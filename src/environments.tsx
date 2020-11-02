@@ -83,7 +83,7 @@ const dev: EnvVars = {
     webClientId:
       '1068323245880-f7r9hocb5v92s0dubf0ucpnkcm2ise79.apps.googleusercontent.com',
     androidClientId:
-      '1068323245880-psk6d6giils8osmpo2811v798b2pklmc.apps.googleusercontent.com',
+      '1068323245880-t6ilpgqd98nmt3nf4a2ts9trv7809kjs.apps.googleusercontent.com',
   },
   facebook: {
     appId: '651129349099345',

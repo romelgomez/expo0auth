@@ -24,7 +24,7 @@
     },
     "scheme": "exp",
     "android": {
-      "package": "com.expo0auth.demo",
+      "package": "com.autana.expo0auth",
       "versionCode": 1,
       "googleServicesFile": "./google-services.json"
     }

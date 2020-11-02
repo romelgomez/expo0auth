@@ -42,8 +42,11 @@ const login = (promptAsync: PromptAsync) => {
 };
 
 export function GoogleAuth() {
+  // The google login not completed the process in the .apk file but in the Android emulator work fine. #10860 - https://github.com/expo/expo/issues/10860
   // https://github.com/expo/expo/issues/3540#issuecomment-466709365
   // https://docs.expo.io/versions/latest/sdk/google/
+  // https://docs.expo.io/versions/latest/sdk/google/#server-side-apis
+  // workaround with a microservice - https://github.com/expo/expo/issues/3540#issuecomment-491248739
   const [request, _, promptAsync] = useIdTokenAuthRequest({
     expoClientId: environments.google?.expoClientId,
     webClientId: environments.google?.webClientId,
