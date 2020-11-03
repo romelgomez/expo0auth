@@ -10,7 +10,7 @@ Demo Web: [https://expo0auth.web.app](https://expo0auth.web.app)
 
 - [x] Web - **Video**: [https://youtu.be/UyWPda3DQoc](https://youtu.be/UyWPda3DQoc)
 - [x] Android emulator - **Video**: [https://youtu.be/HuZhiJRvUaA](https://youtu.be/HuZhiJRvUaA)
-- [ ] Android Apk - **Video**: [https://youtu.be/ZgQkrFry_6o](https://youtu.be/ZgQkrFry_6o)
+- [x] Android Apk - **Video**: [https://youtu.be/ZgQkrFry_6o](https://youtu.be/ZgQkrFry_6o)
 
 ### Bugs
 
