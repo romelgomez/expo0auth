@@ -14,8 +14,16 @@ import { logInAsync, LogInResult } from 'expo-google-app-auth';
 /**
  * nativeAuthLogIn function will be called in native android or apk 
  * 
- * With this flow we need save the token, meaning that for the app, not web, we need set a flow 
- * to know the auth status of the user in the app, https://docs.expo.io/guides/authentication/#storing-data  
+ * To know the auth state ways:
+ * 
+ * [One way] is with this flow we need save the token, and set a flow
+ * to know the auth status of the user in the app, https://docs.expo.io/guides/authentication/#storing-data
+ * And also we need to look for a way to keep the token on the web, storing-data doesn't support that, maybe with localstorage.
+ * 
+ * [Other way] is that with logInAsync we get the idToken, and then, and with firebase again signIn using signInWithCredential,
+ * and that its, firebase will keep the auth status for us.
+ * 
+ * Refs:
  * 
  * https://docs.expo.io/versions/latest/sdk/google/#usage
  * https://github.com/expo/expo/blob/master/packages/expo-google-app-auth/src/Google.ts
@@ -34,6 +42,40 @@ function nativeAuthLogIn() {
   })
   .then((logInResult: LogInResult) => {
     console.log('android:nativeAuth:logInResult',JSON.stringify(logInResult).toString());
+
+    // type: 'success';
+    // accessToken: string | null;
+    // idToken: string | null;
+    // refreshToken: string | null;
+    // user: GoogleUser;
+
+    if (logInResult?.type === 'success') {
+
+      // console.log('android:nativeAuth:logInResult.type',logInResult.type);
+      // console.log('android:nativeAuth:logInResult.accessToken',logInResult.accessToken);
+      // console.log('android:nativeAuth:logInResult.idToken', logInResult.idToken);
+      // console.log('android:nativeAuth:logInResult.refreshToken', logInResult.refreshToken);
+      // console.log('android:nativeAuth:logInResult.user', JSON.stringify(logInResult.user).toString());
+
+      const credential = firebase.auth.GoogleAuthProvider.credential(
+        logInResult.idToken
+      );
+
+      return firebase
+        .auth()
+        .signInWithCredential(credential)
+        .then(({ user }: firebase.auth.UserCredential) => {
+          console.log(
+            'GoogleAuth:signInWithCredential',
+            `uid: ${user?.uid},`,
+            `email: ${user?.email},`,
+            `isAnonymous: ${user?.isAnonymous}.`
+          );
+        });
+    }
+    
+    return Promise.reject(logInResult);
+
   })
   .catch((reason) => {
     console.log('android:nativeAuth:reason', JSON.stringify(reason).toString());
