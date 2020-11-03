@@ -8,12 +8,49 @@ import { Button } from '@ant-design/react-native';
 import { ResponseType, AuthSessionResult } from 'expo-auth-session';
 import { AccountLinking, PromptAsync } from './auth.d';
 import environments from '../environments';
+import { logInAsync, LogInResult } from 'expo-google-app-auth';
+
+
+/**
+ * nativeAuthLogIn function will be called in native android or apk 
+ * 
+ * With this flow we need save the token, meaning that for the app, not web, we need set a flow 
+ * to know the auth status of the user in the app, https://docs.expo.io/guides/authentication/#storing-data  
+ * 
+ * https://docs.expo.io/versions/latest/sdk/google/#usage
+ * https://github.com/expo/expo/blob/master/packages/expo-google-app-auth/src/Google.ts
+ * "Deprecated: Native Google Sign-In has been moved to Expo.GoogleSignIn ('expo-google-sign-in') Falling back to `web` behavior. `behavior` deprecated in SDK 34"
+ * https://github.com/expo/expo/tree/master/packages/expo-google-sign-in
+ * https://github.com/expo/expo/blob/master/packages/expo-google-sign-in/src/GoogleSignIn.ts
+ * https://docs.expo.io/versions/latest/sdk/google-sign-in/#usage
+ * https://docs.expo.io/versions/latest/sdk/google/#deploying-to-a-standalone-app-on-android
+ * 
+ */
+function nativeAuthLogIn() {
+
+  logInAsync({
+    scopes: ['profile', 'email'],
+    clientId: environments.google?.androidClientId
+  })
+  .then((logInResult: LogInResult) => {
+    console.log('android:nativeAuth:logInResult',JSON.stringify(logInResult).toString());
+  })
+  .catch((reason) => {
+    console.log('android:nativeAuth:reason', JSON.stringify(reason).toString());
+  });
+
+} 
+
 
 maybeCompleteAuthSession();
 
+
 const login = (promptAsync: PromptAsync) => {
-  return promptAsync()
+  promptAsync()
     .then((response: AuthSessionResult | null) => {
+
+      console.info('android:AuthSessionResult', JSON.stringify(response).toString());
+
       if (response?.type === 'success') {
         const { id_token } = response.params;
 
@@ -32,9 +69,9 @@ const login = (promptAsync: PromptAsync) => {
               `isAnonymous: ${user?.isAnonymous}.`
             );
           });
-      } else {
-        return Promise.reject(response);
       }
+      
+      return Promise.reject(response);
     })
     .catch((reason: AccountLinking) => {
       console.error(reason);
@@ -70,7 +107,14 @@ export function GoogleAuth() {
     <Button
       disabled={!request}
       onPress={() => {
-        login(promptAsync);
+
+        if (Platform.OS === 'android') {
+          nativeAuthLogIn();
+        } else {
+          login(promptAsync);
+        }
+    
+        
       }}
     >
       Login with Google
